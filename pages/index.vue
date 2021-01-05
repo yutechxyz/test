@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-btn
-      :x-large="false"
-      depressed
       :color="color"
-      :disabled="false"
+      :elevation="2"
+      :large="large"
+      :loading="loading"
       @click="handleClick"
     >
       Extra large Button
@@ -16,7 +16,8 @@
 export default {
   props: {
     color: { default: 'warning' },
-    size: { default: 'x-large' }
+    large: { default: false },
+    loading: { default: false }
   },
   methods: {
     handleClick() {
