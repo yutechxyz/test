@@ -4,6 +4,7 @@
     :elevation="2"
     :large="large"
     :loading="loading"
+    justify="center"
     @click="handleClick"
   >
     Extra large Button
