@@ -1,27 +1,27 @@
 <template>
   <div>
-    <v-btn
-      :color="color"
-      :elevation="2"
-      :large="large"
-      :loading="loading"
-      @click="handleClick"
-    >
-      Extra large Button
-    </v-btn>
+    <BaseButton v-bind="buttonProps" @click="handleClick" />
   </div>
 </template>
 
 <script>
+import BaseButton from '@/components/BaseButton'
 export default {
-  props: {
-    color: { default: 'warning' },
-    large: { default: false },
-    loading: { default: false }
+  components: {
+    BaseButton
+  },
+  data() {
+    return {
+      buttonProps: {
+        color: 'success',
+        large: false,
+        loading: false
+      }
+    }
   },
   methods: {
     handleClick() {
-      console.log('click')
+      console.log('click2')
     }
   }
 }
