@@ -1,12 +1,63 @@
 <template>
-  <div>
-    <BaseButton v-bind="buttonProps" @click="handleClick" />
-    <v-row class="blue lighten-4" style="height: 450px;" justify="center" align-content="center">
-      <v-col cols=12 sm=10 md=8 lg=4 xl=3 v-for="n in 3" :key="n">
-        <v-card color="blue" outlined tile height=150></v-card>
-      </v-col>
-    </v-row>
-  </div>
+  <v-row justify="center">
+    <v-dialog
+      v-model="dialog"
+      persistent
+      max-width="600px"
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="primary"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
+          Open Dialog
+        </v-btn>
+      </template>
+      <v-card>
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col cols="12" class="mb-n4">
+                <!-- margin-bottom -16px nが- -->
+                <v-text-field
+                  label="メールアドレス*"
+                  required
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-text-field
+                  label="パスワード*"
+                  type="password"
+                  required
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-btn
+                  color="error"
+                  align-content="center"
+                  @click="dialog = false"
+                >
+                  ログイン
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="info"
+            text
+            @click="dialog = false"
+          >
+            閉じる
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-row>
 </template>
 
 <script>
@@ -17,11 +68,7 @@ export default {
   },
   data() {
     return {
-      buttonProps: {
-        color: 'success',
-        large: false,
-        loading: false
-      }
+      dialog: true
     }
   },
   methods: {
