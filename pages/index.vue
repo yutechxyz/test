@@ -1,21 +1,11 @@
 <template>
   <v-row justify="center">
-    <v-dialog
-      v-model="dialog"
-      persistent
-      max-width="600px"
-    >
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          color="primary"
-          dark
-          v-bind="attrs"
-          v-on="on"
-        >
-          Open Dialog
-        </v-btn>
-      </template>
+    <v-dialog v-model="dialog" persistent max-width="600px">
       <v-card>
+        <!-- タイトルは中央寄せにしたいね -->
+        <v-card-title>
+          <span class="headline">Foot-Repo(ロゴ)</span>
+        </v-card-title>
         <v-card-text>
           <v-container>
             <v-row>
@@ -33,15 +23,18 @@
                   required
                 ></v-text-field>
               </v-col>
-              <v-col cols="12">
-                <v-btn
-                  color="error"
-                  align-content="center"
-                  @click="dialog = false"
-                >
-                  ログイン
-                </v-btn>
-              </v-col>
+              <v-row justify="center" class="mt-4">
+                <v-col cols="6">
+                  <v-btn
+                    color="error"
+                    block
+                    @click="loading = !loading"
+                    :loading="loading"
+                  >
+                    ログイン
+                  </v-btn>
+                </v-col>
+              </v-row>
             </v-row>
           </v-container>
         </v-card-text>
@@ -68,7 +61,8 @@ export default {
   },
   data() {
     return {
-      dialog: true
+      dialog: true,
+      loading: false
     }
   },
   methods: {
