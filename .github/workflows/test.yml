@@ -3,11 +3,7 @@ name: Test
 on:                                         # いつやるか
   push:                                     # push時にやる
     branches:                               # ブランチを指定
-      - saeki_review*
-      - takahashi_review*
-      - tanabe_review*
-      - araki_review*
-      - cristina_review*
+      - aa
 
 jobs:
   testing:                                  # job名
