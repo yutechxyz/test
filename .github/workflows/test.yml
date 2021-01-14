@@ -1,0 +1,21 @@
+name: Test
+
+on:                                         # いつやるか
+  push:                                     # push時にやる
+    branches:                               # ブランチを指定
+      - aa
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  testing:                                  # job名
+    runs-on: ubuntu-latest                  # 実行環境を指定
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm ci                         # package-lock.jsonから依存関係をインストール
+      - run: npm test                       # npm run test (jest)を実行
